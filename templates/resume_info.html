@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+  <title>Table - Brand</title>
+  <link rel="stylesheet" href="./static/assets/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inconsolata:wght@200..900&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./static/assets/fonts/fontawesome-all.min.css" />
+  <link rel="stylesheet" href="./static/assets/fonts/font-awesome.min.css" />
+  <link rel="stylesheet" href="./static/style/global.css" />
+  <link rel="stylesheet" href="./static/assets/fonts/fontawesome5-overrides.min.css" />
+  <link rel="stylesheet" href="./static/assets/css/bs-theme-overrides.css" />
+  <link rel="stylesheet" href="./static/assets/css/Google-Style-Login-.css" />
+  <link rel="stylesheet" href="./static/assets/css/Jumbotron-Circular-Addon.css" />
+  <link rel="stylesheet" href="./static/style/table.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+  <div class="main">
+    <div class="nav" id="nav">
+      <a class="logo" href="#">
+        <img src="./static//images/ir2.webp" alt="logo" />
+        <p>ImprovX</p>
+        <div class="line"></div>
+      </a>
+      <ul class="nav-list">
+        <li class="nav-items">
+          <a class="" href="/"><i class="fas fa-comment-dots"></i><span>Career Advisor</span></a>
+        </li>
+        <li class="nav-items">
+          <a class="" href="/training_page"><i class="fas fa-user"></i><span>Training Page</span></a>
+        </li>
+        <li class="nav-items">
+          <a class="active" href="/users_list"><i class="fas fa-table"></i><span>Active Users</span></a>
+        </li>
+        <li class="nav-items">
+          <a class="" href="#"><i class="fa fa-video-camera"></i><span>Demo</span></a>
+        </li>
+        <li class="nav-items">
+          <a class="" href="/resume_upload2"><i class="fas fa-file-upload"></i><span>Resume Upload</span></a>
+        </li>
+      </ul>
+    </div>
+    <div class="content" id="content">
+      <nav class="navbar navbar-expand shadow mb-0 topbar topnav navbar-light">
+        <div class="container-fluid">
+          <button class="btn btn-link  rounded-circle me-3" id="sidebarToggleTop" type="button">
+            <i class="fas fa-bars" style="color: #4f0174"></i>
+          </button>
+          <form class="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <div class="input-group"></div>
+          </form>
+          <ul class="navbar-nav flex-nowrap ms-auto">
+            <div class="d-none d-sm-block topbar-divider"></div>
+            <li class="nav-item dropdown no-arrow">
+              <div class="nav-item dropdown no-arrow">
+                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">
+                  <span class="d-none d-lg-inline text-black me-2 small">{{ user_name }}</span>
+                  <img class="border rounded-circle img-profile" src="./static/assets/img/avatar.png" />
+                </a>
+                <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in ">
+                  <a class="dropdown-item" href="/logout"><i
+                      class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="container-fluid table_main">
+        <h3 class="table_head mb-4" style="font-weight: bold;text-align: center; ">ImprovX Resumes</h3>
+        <div class="card shadow card-edit">
+          <div class="card-header py-3">
+            <p class=" m-0 fw-bold" style="color:#01cbbf;">User Information</p>
+          </div>
+          <div class="card-body">
+            <div class="table-container">
+              <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                <table class="table my-0" id="dataTable">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Phone Number</th>
+                      <th>LinkedIn URL</th>
+                      <th>GitHub URL</th>
+                      <th>Portfolio URL</th>
+                      <th>Job Title</th>
+                      <th>Tech Stack</th>
+                      <th>Work Experience Summary</th>
+                      <th>Location</th>
+                    
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for i in lx %}
+                    <tr>
+                      <td>{{ i[0] }}</td>
+                      <td>{{ i[1] }}</td>
+                      <td>{{ i[2] }}</td>
+                      <td>{{ i[3] }}</td>
+                      <td>{{ i[4] }}</td>
+                      <td>{{ i[5] }}</td>
+                      <td>{{ i[6] }}</td>
+                      <td>{{ i[7] }}</td>
+                      <td>{{ i[8] }}</td>
+                      <td>{{ i[9] }}</td>
+                    </tr>
+                    {% endfor %}
+                    
+                  </tbody>
+                  <tfoot>
+                    <tr></tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="bg-transparent">
+        <div class="container">
+          <div class="text-center my-auto copyright foot">
+            <span style="margin-right: 10px; font-weight:900;">Powered By iRekommend @2024</span>
+            <span><a href="https://www.irekommend.com/privacy-policy" target="_blank">Privacy Policy</a></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script src="./static/assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="./static/assets/js/theme.js"></script>
+  <script src="./static/scripts/home.js"></script>
+</body>
+
+</html>

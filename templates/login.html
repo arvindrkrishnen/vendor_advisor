@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./static/style/login.css" />
+    <title>User Login</title>
+</head>
+<body>
+
+    <div class="login-wrapper">
+        <!-- <img src="./static/images/ir2.webp" style="width: 250px; margin-top: -50px;"/> -->
+    <div class='login_main'>
+       
+        <div class='login_head'>
+            
+         <p>LOGIN</p>
+
+        
+         <h3>Please sign in to your account </h3>
+
+        </div>
+
+        <form class='login_form' method="post" action="{{ url_for('login_response') }}">
+        <div class='inpp'>
+        <label for="email" class='lbl'>Email Address:</label>
+        <input type="text" id="inputEmail" name="email" class='inpt_fld' placeholder='Enter Email' autofocus=""/>
+        </div>
+
+        <div class='inpp'>
+        <label for="password" class='lbl'>Password:</label>
+        <input type="password" id="inputPassword" name="password" class='inpt_fld' placeholder='Password'/>
+        </div>
+        <a class='forgot_link ' href="/forget_pass">Forgot Password?</a>
+
+        <button class='signin_btn' type="submit">Login</button>
+        </form>
+       
+        <p class='regis'>Don't have an account?<a href="/sign_up"  class='register_link'>  Register</a></p>
+    </div>
+    
+</div>
+
+    {% if show_alert %}
+    <script>
+        alert('Invalid Username or Password!');
+    </script>
+    {% endif %}
+
+
+    <script src="/static/admin_login/js/jquery.min.js"></script>
+    <script src="/static/admin_login/bootstrap/js/bootstrap.min.js"></script>
+    
+</body>
+</html>

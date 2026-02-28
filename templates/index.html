@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+  <title>Vendor Analysis</title>
+  <link rel="stylesheet" href="./static/assets/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inconsolata:wght@200..900&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./static/assets/fonts/fontawesome-all.min.css" />
+  <link rel="stylesheet" href="./static/assets/fonts/font-awesome.min.css" />
+  <link rel="stylesheet" href="./static/style/global.css" />
+  <link rel="stylesheet" href="./static/style/index.css" />
+  <link rel="stylesheet" href="./static/assets/fonts/fontawesome5-overrides.min.css" />
+  <link rel="stylesheet" href="./static/assets/css/bs-theme-overrides.css" />
+  <link rel="stylesheet" href="./static/assets/css/Google-Style-Login-.css" />
+  <link rel="stylesheet" href="./static/assets/css/Jumbotron-Circular-Addon.css" />
+  <style>
+    .vendor-input-container .form-label {
+      font-weight: bold;
+      color: #4f0174; /* Adjust color as per your design preference */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main">
+    <div class="nav" id="nav">
+      <a class="logo" href="#">
+        <p>iMarket</p>
+        <div class="line"></div>
+      </a>
+
+      <ul class="nav-list">
+        <li class="nav-items">
+          <a class="active" href="/"><i class="fas fa-comment-dots"></i><span>Vendor Advisor</span></a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="content" id="content">
+      <nav class="navbar navbar-expand shadow mb-0 topbar topnav navbar-light">
+        <div class="container-fluid">
+          <button class="btn btn-link rounded-circle me-3" id="sidebarToggleTop" type="button">
+            <i class="fas fa-bars" style="color: #4f0174"></i>
+          </button>
+          <ul class="navbar-nav flex-nowrap ms-auto">
+            <li class="nav-item dropdown no-arrow">
+              <div class="nav-item dropdown no-arrow">
+                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span
+                    class="d-none d-lg-inline text-black me-2 small">{{ user_name }}</span><img
+                    class="border rounded-circle img-profile" src="./static/assets/img/avatar.png" /></a>
+                <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in ">
+                  <a class="dropdown-item" href="/logout"><i
+                      class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+        <div class="index_main">
+          <div class="text-container">
+            <h1 class="large-text">Vendor Evaluation Platform</h1>
+            <p class="small-text">Enter the vendor's name below to begin a detailed evaluation using AI-powered insights
+              and competitive analysis tools.</p>
+          </div>
+
+          <div class="vendor-input-container">
+            <form action="/upload" method="POST">
+              <div class="mb-3">
+                <label for="vendorName" class="form-label">Vendor Name</label>
+                <input type="text" class="form-control" id="vendorName" name="vendor_name" placeholder="Enter Vendor Name" required />
+              </div>
+              <button type="submit" class="btn btn-primary">Start Analysis</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <footer class="bg-transparent">
+        <div class="container">
+          <div class="text-center my-auto copyright foot">
+            <span style="margin-right: 10px; font-weight:900;">Powered By iRekommend @2024</span>
+            <span><a href="https://www.irekommend.com/privacy-policy" target="_blank">Privacy Policy</a></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="./static/assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="./static/assets/js/theme.js"></script>
+  <script>
+    function checkSessionStatus() {
+      fetch('/check_session', {
+        method: 'GET',
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+          }
+          return response.json();
+        })
+        .then(data => {
+          if (!data.session_valid) {
+            window.location.href = '/login';
+          }
+        })
+        .catch(error => console.error('Error checking session status:', error));
+    }
+
+    // Check session status every 185 seconds
+    setInterval(checkSessionStatus, 185000);
+  </script>
+</body>
+
+</html>

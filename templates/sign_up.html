@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <title>ImprovX - Sign Up</title>
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap"
+    />
+    <link rel="stylesheet" href="./static/style/register.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <!-- Font Awesome -->
+
+    <style>
+      
+    </style>
+  </head>
+
+  <body>
+
+    <div class="register-wrapper">
+
+    <div class='register_main'>
+
+      <div class='login_head'>
+       <p>CREATE ACCOUNT</p>
+       <!-- <h3>Create an account to start looking for the career you like </h3> -->
+      </div>
+
+      <form class='login_form' action="{{ url_for('sign_up_response') }}" method="post" onsubmit="return validatePassword()">
+      <div class='inpp'>
+      <label for="email" class='lbl'>Email Address</label>
+      <input type="email" id="email" name="email" class='inpt_fldd' placeholder='Enter Email'/ required>
+      </div>
+      
+      <div class='inpp'>
+        <label for="tel" class='lbl'>Name</label>
+       <input type="text" id="tel" placeholder="First Name" name="username" class='inpt_fldd' required/>
+      </div>
+      <div class='inpp'>
+      <label for="password" class='lbl'>Password</label>
+      <input type="password" id="password" name="password" class='inpt_fldd' placeholder='Password'/ required>
+      </div>
+
+      <button class='signin_btns ' type="submit">Create account</button>
+      </form>
+
+    
+
+        
+      <p class='regis'>Have an account?<a href="/login.html" class='register_link'> Login</a></p>
+  </div>
+
+</div>
+
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script>
+      function validatePassword() {
+        const password = document.getElementById('password').value;
+        console.log(password,"--")
+        const passwordRegex =/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{6,}$/;
+
+        if (!passwordRegex.test(password)) {
+          alert(
+            'Password must be at least 6 characters long, contain at least one uppercase letter, one number and one special character.',
+          );
+          return false;
+        }
+        return true;
+      }
+    </script>
+  </body>
+</html>

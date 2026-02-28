@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+  <title>CareerBot</title>
+  <link rel="stylesheet" href="./static/assets/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inconsolata:wght@200..900&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./static/assets/fonts/fontawesome-all.min.css" />
+  <link rel="stylesheet" href="./static/assets/fonts/font-awesome.min.css" />
+  <link rel="stylesheet" href="./static/style/global.css" />
+  <link rel="stylesheet" href="./static/style/mode.css" />
+  <link rel="stylesheet" href="./static/assets/fonts/fontawesome5-overrides.min.css" />
+  <link rel="stylesheet" href="./static/assets/css/bs-theme-overrides.css" />
+  <link rel="stylesheet" href="./static/assets/css/Google-Style-Login-.css" />
+  <link rel="stylesheet" href="./static/assets/css/Jumbotron-Circular-Addon.css" />
+</head>
+
+<body>
+  <div class="main">
+    <div class="nav" id="nav">
+      <a class="logo" href="#">
+        <p>iMarket</p>
+        <div class="line"></div>
+      </a>
+      <ul class="nav-list">
+        <li class="nav-items">
+          <a class="active" href="/"><i class="fas fa-comment-dots"></i><span>Vendor Advisor</span></a>
+        </li>
+        <li class="nav-items">
+          <a href="/export_chat"><i class="fas fa-file-download"></i>
+            <span>Chat Export</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="content" id="content">
+      <nav class="navbar navbar-expand shadow mb-0 topbar topnav navbar-light">
+        <div class="container-fluid">
+          <button class="btn btn-link rounded-circle me-3" id="sidebarToggleTop" type="button">
+            <i class="fas fa-bars" id="bars"></i>
+          </button>
+
+          <div class="career-bot-header">
+            <span class="bot-icon"></span>
+           Vendor Advisor
+          </div>
+
+
+
+          <ul class="navbar-nav flex-nowrap ms-auto">
+
+            <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5" />
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              </svg>
+            </button>
+            <div class="d-none d-sm-block topbar-divider"></div>
+            <li class="nav-item dropdown no-arrow">
+              <div class="nav-item dropdown no-arrow">
+                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">
+                  <span class="d-none d-lg-inline text-black me-2 small " id="user">{{ user_name
+                    }}</span>
+                  <img class="border rounded-circle img-profile" src="./static/assets/img/avatar.png" />
+                </a>
+                <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
+                  <a class="dropdown-item" href="/logout"><i
+                      class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div id="chat-interface">
+        <div class="logp">
+          <div class="chat-area">
+            <div id="chat-log">
+              <!-- Display the initial message from the bot -->
+              <p class="message bot-message">
+                <span class="message-text no-wrap" style="white-space: normal">
+                  Hi, I’m <strong>Swift</strong>!<br /><br />
+                  <strong>Welcome to Vendor Advisor</strong> – your ultimate tool for vendor evaluation and analysis. 
+                  Swift empowers you with insights to explore market positioning, assess competitors, 
+                  and generate detailed matrices for comparison.<br /><br />
+              
+                  <strong>Maximize your insights with Swift:</strong><br />
+                  - <strong>Perform in-depth:</strong> Vendor Overview and Market Position Analysis<br />
+                  - <strong>Generate customized:</strong> Pugh Matrices for competitor comparison<br />
+                  - <strong>Get tailored questions:</strong> Specifically crafted for your evaluation needs<br /><br />
+              
+                  You can ask me up to <strong>15 questions</strong> each day. Let’s get started!<br />
+                </span>
+              </p>
+            </div>
+
+            <!-- Chat input container -->
+            <div id="input-container">
+              <textarea id="user-input" placeholder="Type your message..." rows="1"></textarea>
+              <button onclick="submitResponse()" aria-label="Send message"></button>
+              <div class="balls" id="loading">
+                <div class="loading-text">
+                  <span id="loading-msg">Compiling search results..</span>
+                  <span class="dots"></span>
+                </div>
+              </div>
+
+              <div id="feedback-container" style="display: none">
+                <p>Please rate your experience:</p>
+                <select id="rating">
+                  <option value="5">5 - Excellent</option>
+                  <option value="4">4 - Very Good</option>
+                  <option value="3">3 - Good</option>
+                  <option value="2">2 - Fair</option>
+                  <option value="1">1 - Poor</option>
+                </select>
+                <textarea id="feedback" placeholder="Leave your feedback here..." rows="3"></textarea>
+                <button onclick="submitFeedback()">
+                  Submit Feedback
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <div id="related-questions">
+            <h3>Related Questions</h3>
+            <div class="questions-container">
+            </div>
+          </div>
+
+          <script>
+            function addToInput(question) {
+              const userInput = document.getElementById("user-input");
+              userInput.value = question; // Set the question to the input area
+              userInput.focus(); // Focus the input area for user to edit or send
+              submitResponse();
+            }
+          </script>
+        </div>
+
+      </div>
+      <script>
+        let session_id = "{{ session_id }}";
+
+        // Function to handle the dynamic height of the textarea
+        const userInput = document.getElementById("user-input");
+
+        userInput.addEventListener("input", function () {
+          userInput.style.height = "auto";
+          userInput.style.height = `${userInput.scrollHeight}px`;
+        });
+
+        // Function to submit the user response
+        function submitResponse() {
+          const userMessage = userInput.value;
+          // Handle submission logic here (e.g., send data to server)
+          userInput.value = "";
+          userInput.style.height = "auto"; // Reset the height after submitting
+        }
+      </script>
+
+      <script>
+        function checkSessionStatus() {
+          fetch('/check_session', {
+            method: 'GET',  // Ensure the fetch request is a GET request
+          })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+              }
+              return response.json();
+            })
+            .then(data => {
+              console.log('Session check response:', data); // Log the response
+              if (!data.session_valid) {
+                // If session is not valid, redirect to the logout page
+                window.location.href = '/login';
+              }
+            })
+            .catch(error => console.error('Error checking session status:', error));
+        }
+
+        // Check session status every 5 seconds (5000 milliseconds)
+        setInterval(checkSessionStatus, 185000);
+      </script>
+
+      <script src="./static/assets/bootstrap/js/bootstrap.min.js"></script>
+      <script src="./static/assets/js/theme.js"></script>
+      <script src="./static/scripts/home.js"></script>
+    </div>
+  </div>
+  </div>
+</body>
+
+</html>
