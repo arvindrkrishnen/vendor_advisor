@@ -1,0 +1,13 @@
+flask
+python-dotenv
+pandas
+langchain==0.1.0
+langchain_anthropic
+langchain_core
+pyrebase4
+pdfminer.six
+pymongo
+langchain_mongodb
+langchain_openai
+langchain_community
+langchain-google-genai
